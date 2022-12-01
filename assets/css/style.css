@@ -1,20 +1,13 @@
-.main-header {
-    color: purple;
-    text-align: center;
-    
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/*first paragraph*/
-
-.firstpar {
+main {
     text-align: center;
-}
-
-.startbtnbox {
-    text-align: center;
-}
-
-.startbtn {
-    text-align: center;
-    font-size: 22px;
+    justify-content: center;
+    flex: 1 0 auto;
+    margin-left:200px;
+    margin-right:200px;
 }
