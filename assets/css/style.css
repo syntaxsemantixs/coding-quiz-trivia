@@ -11,3 +11,32 @@ main {
     margin-left:200px;
     margin-right:200px;
 }
+
+.startscreen {
+    display: block;
+}
+
+.question-page {
+    display: block;
+    display: none;
+}
+
+.submit-page {
+    display: block;
+    display: none;
+}
+
+.highscore-page {
+    display: block;
+    display: none;
+}
+
+.wrong {
+    display: inline;
+    display: none;
+}
+
+.correct {
+    display: inline;
+    display: none;
+}

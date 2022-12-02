@@ -26,46 +26,69 @@
     <main>
         <div>
             <!---startscreen--->
-            <section class = "startscreen" id="startscreen">
+            <section class="startscreen" id="startscreen">
                 <div id="introduction">
                     <h1>
                         Coding Quiz trivia
                     </h1>
                     <p id="instruction">
-                        Welcome to Coding Quiz Trivia.<br> 
-                        You will be tested on your coding knowledge in a 60 second quiz.<br> 
+                        Welcome to Coding Quiz Trivia.<br>
+                        You will be tested on your coding knowledge in a 60 second quiz.<br>
                         Each time you get a question wrong time will be deducted from your time.<br>
                         After the quiz, dont forget to check your Highscores.<br>
                         Press start to begin.
                     </p>
-                    <button class="button" id="start-button">Start</button>
+                    <button class="start-button" id="start-button">Start</button>
                 </div>
             </section>
             <!---questions--->
             <section class="question-page" id="question-page">
                 <div>
                     <h2 id="ask-question">Ask question</h2>
-                        <ul>
-                            <li><button class="choice-buttons" id="answer-btn1" value="a">Answer1</button></li>
-                            <li><button class="choice-buttons" id="answer-btn2" value="b">Answer2</button></li>
-                            <li><button class="choice-buttons" id="answer-btn3" value="c">Answer3</button></li>
-                            <li><button class="choice-buttons" id="answer-btn4" value="d">Answer4</button></li>
-                        </ul>
-                    </div>
-                    <!--Correct or wrong response-->
+                    <ul>
+                        <li><button class="choice-buttons" id="answer-btn1" value="a">Answer1</button></li>
+                        <li><button class="choice-buttons" id="answer-btn2" value="b">Answer2</button></li>
+                        <li><button class="choice-buttons" id="answer-btn3" value="c">Answer3</button></li>
+                        <li><button class="choice-buttons" id="answer-btn4" value="d">Answer4</button></li>
+                    </ul>
+                </div>
+                <!--Correct or wrong response-->
                 <div id="responses">
-                    <p>Correct</p>
-                    <p>Wrong</p>
+                    <p>
+                        <span class="correct">Correct</span>
+                        <span class="wrong">Wrong</span>
+                    </p>
                 </div>
             </section>
 
-            <section></section>
+            <!--submit section-->
+            <section class="submit-page" id="submit-page">
+                <div>
+                    <h2 id="finish">Finished!</h2>
+                    <p id="final-score">Your final score is: </p>
+                    <p>Enter initials
+                        <input id="initials">
+                        <button class="submit-button" id="submit-btn">Submit</button>
+                    </p>
+                </div>
+            </section>
+
+            <!--high score section-->
+            <section class="highscore-page" id="highscore-page">
+                <div>
+                    <h2>High Scores</h2>
+                    <div id="score-record">
+                        <p>Your record</p>
+                    </div><br><br>
+                    <div>
+                        <button class="back-button" id="back-btn">Go back</button>
+                        <button class="clear-button" id="clear-btn">Clear Highscores</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
-
-
-
-
-    <script src ="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
