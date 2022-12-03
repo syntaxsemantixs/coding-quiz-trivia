@@ -31,12 +31,12 @@ main {
     display: none;
 }
 
-.wrong {
+#incorrect {
     display: inline;
     display: none;
 }
 
-.correct {
+#correct {
     display: inline;
     display: none;
 }
