@@ -12,8 +12,13 @@ main {
     margin-right:200px;
 }
 
+body {
+    background-color: lightgreen;
+}
+
 .startscreen {
     display: block;
+    background-color: lightblue;
 }
 
 .question-page {
@@ -26,7 +31,7 @@ main {
     display: none;
 }
 
-.highscore-page {
+#highscore-page {
     display: block;
     display: none;
 }
@@ -38,5 +43,15 @@ main {
 
 #correct {
     display: inline;
+    display: none;
+}
+
+.error {
+    display: block;
+    display: none;
+}
+
+.correct {
+    display: block;
     display: none;
 }

@@ -10,11 +10,22 @@ var choices = document.querySelector("#choices")
 var responses = document.querySelector("#responses")
 var correct = document.querySelector("#correct")
 var incorrect = document.querySelector("#incorrect")
+var initialsSpan = document.querySelector("#final-initials")
+var submitButton = document.querySelector("#submit-btn")
+var submitInitals = document.querySelector("#initials")
+var error = document.querySelector("#error")
+var correct = document.querySelector("#correct")
+var highScorePage = document.querySelector("#highscore-page")
+var count = document.querySelector("#count")
+var backButton = document.querySelector("#back-btn")
+var clickForScores = document.querySelector("#scores")
+
 
 var secondsLeft = 59;
 var totalScore = 0;
 var questionIndex = 0
 var timeOut = 3
+var allScores = [];
 
 var questions = [
     {
@@ -80,7 +91,7 @@ function start() {
 function displayquestion () {
     choices.innerHTML = ""
     var currentQuestion = questions[questionIndex]
-    askQuestion.textContent = currentQuestion.question
+    askQuestion.textContent = currentQuestion.question;
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         var answerbutton = document.createElement("button")
         answerbutton.textContent = currentQuestion.choices[i]
@@ -107,7 +118,7 @@ function displayquestion () {
 
 
 function timercountdown() {
-
+    secondsLeft
     var timeInterval = setInterval(function () {
 
         secondsLeft--;
@@ -117,7 +128,7 @@ function timercountdown() {
             clearInterval(timeInterval);
             timeLeft.textContent = "Time's up!"
             finish.textContent = "Time's up!"
-            endquiz()
+            endquiz();
         }
     }, 1000)
 }
@@ -128,10 +139,55 @@ function endquiz() {
     finalScore.textContent = "Final Score = " + totalScore;
     timeLeft.style.display = "none";
 
-}
-
-function saveScores () {
     
 }
 
+function saveScores () {
+    var initials = localStorage.getItem("initials");
+
+    if (!initials) {
+        return;
+    }
+    //add function into this textcontent below
+    initialsSpan.textContent = initials + " = " + totalScore;
+    // var li = document.createElement("li")
+    // li.textContent = initials + " = " + totalScore;
+    // initialsSpan.textContent = li
+    scoreBoard.style.display = "none"
+    highScorePage.style.display = "block"
+    
+    
+}
+
+
+
 startBtn.addEventListener("click", start);
+
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var initials = document.querySelector("#initials").value;
+
+    if (initials === "") {
+        error.style.display = "block";
+    } else {
+        correct.style.display = "block";
+    }
+    localStorage.setItem("initials", initials)
+    saveScores();
+} )
+
+backButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    highScorePage.style.display = "none";
+    startScreen.style.display = "block";
+})
+
+clickForScores.addEventListener("click", function(event) {
+    event.preventDefault();
+    highScorePage.style.display = "block";
+    startScreen.style.display = "none";
+    questionPage.style.display = "none";
+    scoreBoard.style.display = "none";
+
+})

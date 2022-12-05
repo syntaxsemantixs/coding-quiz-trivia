@@ -58,11 +58,13 @@
             <!--submit section-->
             <section class="submit-page" id="submit-page">
                 <div>
-                    <h2 id="finish">Finished!</h2>
-                    <p id="final-score">Your final score is: </p>
+                    <h2 id="finish">Finished text</h2>
+                    <p id="final-score">Final Score Text </p>
                     <p>Enter initials
                         <input id="initials">
                         <button class="submit-button" id="submit-btn">Submit</button>
+                        <span class="error" id="error">Initials cannot be blank.</span>
+                        <span class="correct" id="correct">Initials Saved.</span>
                     </p>
                 </div>
             </section>
@@ -72,7 +74,7 @@
                 <div>
                     <h2>High Scores</h2>
                     <div id="score-record">
-                        <p>Your record</p>
+                        <p><ul id="final-initials"></ul></p>
                     </div><br><br>
                     <div>
                         <button class="back-button" id="back-btn">Go back</button>
