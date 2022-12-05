@@ -21,9 +21,9 @@ var backButton = document.querySelector("#back-btn")
 var clickForScores = document.querySelector("#scores")
 
 
-var secondsLeft = 59;
+var secondsLeft
 var totalScore = 0;
-var questionIndex = 0
+var questionIndex = 0;
 var timeOut = 3
 var allScores = [];
 
@@ -118,7 +118,7 @@ function displayquestion () {
 
 
 function timercountdown() {
-    secondsLeft
+    secondsLeft = 60
     var timeInterval = setInterval(function () {
 
         secondsLeft--;
