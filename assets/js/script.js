@@ -19,11 +19,12 @@ var highScorePage = document.querySelector("#highscore-page")
 var count = document.querySelector("#count")
 var backButton = document.querySelector("#back-btn")
 var clickForScores = document.querySelector("#scores")
+var clearbutton = document.querySelector("#clear-btn")
 
 
-var secondsLeft = 59;
+var secondsLeft
 var totalScore = 0;
-var questionIndex = 0
+var questionIndex = 0;
 var timeOut = 3
 var allScores = [];
 
@@ -108,6 +109,7 @@ function displayquestion () {
                 incorrect.style.display = "block"
                 secondsLeft = secondsLeft -10
             }
+            localStorage.setItem("highScore",totalScore)
             questionIndex++;
             displayquestion();
         })
@@ -118,7 +120,8 @@ function displayquestion () {
 
 
 function timercountdown() {
-    secondsLeft
+    secondsLeft = 60
+    questionIndex = 0
     var timeInterval = setInterval(function () {
 
         secondsLeft--;
@@ -137,26 +140,56 @@ function endquiz() {
     questionPage.style.display = "none";
     scoreBoard.style.display = "block";
     finalScore.textContent = "Final Score = " + totalScore;
-    timeLeft.style.display = "none";
+    timeLeft.style.display = "block";
 
     
 }
 
-function saveScores () {
-    var initials = localStorage.getItem("initials");
+function saveScores (score,initials) {
+    var allScores = localStorage.getItem("allScores");
+    if (allScores) {
+        allScores = JSON.parse(allScores);
+      } else {
+        allScores = [];
+      }
+    //   return allScores;
+    // if (!initials) {
+    //     return;
+    // }
 
-    if (!initials) {
-        return;
-    }
     //add function into this textcontent below
-    initialsSpan.textContent = initials + " = " + totalScore;
-    // var li = document.createElement("li")
-    // li.textContent = initials + " = " + totalScore;
-    // initialsSpan.textContent = li
+    var initialsScore = {
+        score: score,
+        initials: initials
+    }
+    allScores.push(initialsScore)
+    localStorage.setItem("allScores",JSON.stringify(allScores))
+    // content = initials + " = " + totalScore;
+
+    
+
     scoreBoard.style.display = "none"
     highScorePage.style.display = "block"
     
     
+}
+
+function init() {
+    var storedScores = localStorage.parse(localStorage.getItem("content"))
+
+    if (storeScores !== null) {
+        content = storedScores;
+      }
+
+      saveScores();
+}
+
+function storeScores(){
+    localStorage.setItem("content",JSON.stringify(content));
+}
+
+function clearHighScores() {
+    localStorage.clear();
 }
 
 
@@ -167,6 +200,7 @@ submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     var initials = document.querySelector("#initials").value;
+    var score = localStorage.getItem("highScore")
 
     if (initials === "") {
         error.style.display = "block";
@@ -174,8 +208,15 @@ submitButton.addEventListener("click", function(event) {
         correct.style.display = "block";
     }
     localStorage.setItem("initials", initials)
-    saveScores();
+    saveScores(score,initials);
 } )
+
+function printScore() {
+    var allScores = localStorage.getItem("allScores");
+    for (let i = 0; i < allScores.length; i++) {
+        console.log(allScores[i])
+    }
+}
 
 backButton.addEventListener("click", function(event) {
     event.preventDefault();
@@ -191,3 +232,5 @@ clickForScores.addEventListener("click", function(event) {
     scoreBoard.style.display = "none";
 
 })
+
+clearbutton.addEventListener("click", clearHighScores);
