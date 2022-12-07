@@ -102,13 +102,13 @@ function displayquestion () {
             var buttontext = e.target.textContent
             var answer = questions[questionIndex].answer
             if (answer === buttontext) {
-                incorrect.style.display = "none"
-                correct.style.display = "block"
-                totalScore = totalScore + 10
+                incorrect.style.display = "none";
+                correct.style.display = "block";
+                totalScore = totalScore + 10;
             }else {
-                correct.style.display = "none"
-                incorrect.style.display = "block"
-                secondsLeft = secondsLeft -10
+                correct.style.display = "none";
+                incorrect.style.display = "block";
+                secondsLeft = secondsLeft -10;
             }
             localStorage.setItem("highScore",totalScore)
             questionIndex++;
@@ -124,6 +124,8 @@ function timercountdown() {
     secondsLeft = 60
     questionIndex = 0
     totalScore = 0
+    correct.style.display = "none";
+    incorrect.style.display = "none";
     var timeInterval = setInterval(function () {
 
         secondsLeft--;
