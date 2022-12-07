@@ -145,6 +145,18 @@ function endquiz() {
     
 }
 
+function printScores(){
+    var allScores = localStorage.getItem("allScores");
+    allScores = JSON.parse(allScores);
+     console.log(allScores)
+    for (let i = 0; i < allScores.length; i++) {
+        var scores = document.createElement("li")
+        scores.textContent = allScores[i].score + " " + allScores[i].initials
+        initialsSpan.append(scores)
+    }
+
+}
+
 function saveScores (score,initials) {
     var allScores = localStorage.getItem("allScores");
     if (allScores) {
@@ -192,7 +204,7 @@ function clearHighScores() {
     localStorage.clear();
 }
 
-
+printScores();
 
 startBtn.addEventListener("click", start);
 
@@ -211,12 +223,6 @@ submitButton.addEventListener("click", function(event) {
     saveScores(score,initials);
 } )
 
-function printScore() {
-    var allScores = localStorage.getItem("allScores");
-    for (let i = 0; i < allScores.length; i++) {
-        console.log(allScores[i])
-    }
-}
 
 backButton.addEventListener("click", function(event) {
     event.preventDefault();
