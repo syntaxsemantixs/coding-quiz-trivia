@@ -27,11 +27,13 @@ body {
 }
 
 .submit-page {
+    background-color: lightblue;
     display: block;
     display: none;
 }
 
 #highscore-page {
+    background-color: lightblue;
     display: block;
     display: none;
 }

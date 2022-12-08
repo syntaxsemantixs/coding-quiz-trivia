@@ -92,7 +92,6 @@ function start() {
 function displayquestion () {
     choices.innerHTML = ""
     var currentQuestion = questions[questionIndex]
-    currentQuestion = questions[questionIndex]
     askQuestion.textContent = currentQuestion.question;
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         var answerbutton = document.createElement("button")
