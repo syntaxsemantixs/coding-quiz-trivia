@@ -92,6 +92,7 @@ function start() {
 function displayquestion () {
     choices.innerHTML = ""
     var currentQuestion = questions[questionIndex]
+    console.log(currentQuestion)
     askQuestion.textContent = currentQuestion.question;
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         var answerbutton = document.createElement("button")
@@ -100,6 +101,7 @@ function displayquestion () {
         answerbutton.addEventListener("click",function (e) {
             var buttontext = e.target.textContent
             var answer = questions[questionIndex].answer
+            console.log(questions[i])
             if (answer === buttontext) {
                 incorrect.style.display = "none";
                 correct.style.display = "block";
@@ -111,7 +113,9 @@ function displayquestion () {
             }
             localStorage.setItem("highScore",totalScore)
             questionIndex++;
-            displayquestion();
+            if (questionIndex < 9) {
+                displayquestion();
+            }
         })
     }
 
@@ -144,19 +148,26 @@ function endquiz() {
     scoreBoard.style.display = "block";
     finalScore.textContent = "Final Score = " + totalScore;
     timeLeft.style.display = "block";
+    printScores();
 
     
 }
 
 function printScores(){
     var allScores = localStorage.getItem("allScores");
-    allScores = JSON.parse(allScores);
+    if (allScores) {
+        allScores = JSON.parse(allScores);
+        console.log(allScores)
+        for (let i = 0; i < allScores.length; i++) {
+            var scores = document.createElement("li")
+            scores.textContent = allScores[i].score + " " + allScores[i].initials
+            initialsSpan.append(scores)
+        }
+        
+      } else {
+        allScores = [];
+      }
      console.log(allScores)
-    for (let i = 0; i < allScores.length; i++) {
-        var scores = document.createElement("li")
-        scores.textContent = allScores[i].score + " " + allScores[i].initials
-        initialsSpan.append(scores)
-    }
 
 }
 
@@ -196,7 +207,7 @@ function init() {
         content = storedScores;
       }
 
-      saveScores();
+    //   saveScores();
 }
 
 function storeScores(){
@@ -207,7 +218,7 @@ function clearHighScores() {
     localStorage.clear();
 }
 
-printScores();
+// printScores();
 
 startBtn.addEventListener("click", start);
 
