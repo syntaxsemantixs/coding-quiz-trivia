@@ -155,6 +155,7 @@ function endquiz() {
 
 function printScores(){
     var allScores = localStorage.getItem("allScores");
+    console.log(allScores)
     if (allScores) {
         allScores = JSON.parse(allScores);
         console.log(allScores)
@@ -200,19 +201,19 @@ function saveScores (score,initials) {
     
 }
 
-function init() {
-    var storedScores = localStorage.parse(localStorage.getItem("content"))
+// function init() {
+//     var storedScores = localStorage.parse(localStorage.getItem("content"))
 
-    if (storeScores !== null) {
-        content = storedScores;
-      }
+//     if (storeScores !== null) {
+//         content = storedScores;
+//       }
 
-    //   saveScores();
-}
+//     //   saveScores();
+// }
 
-function storeScores(){
-    localStorage.setItem("content",JSON.stringify(content));
-}
+// function storeScores(){
+//     localStorage.setItem("content",JSON.stringify(content));
+// }
 
 function clearHighScores() {
     localStorage.clear();
