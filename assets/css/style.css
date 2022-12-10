@@ -57,3 +57,7 @@ body {
     display: block;
     display: none;
 }
+
+li {
+    list-style: none;
+}
