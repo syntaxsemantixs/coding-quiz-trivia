@@ -96,6 +96,7 @@ function displayquestion () {
     askQuestion.textContent = currentQuestion.question;
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         var answerbutton = document.createElement("button")
+        answerbutton.setAttribute("style", "color: blue; height: 100px;")
         answerbutton.textContent = currentQuestion.choices[i]
         choices.append(answerbutton)
         answerbutton.addEventListener("click",function (e) {
@@ -111,7 +112,7 @@ function displayquestion () {
                 incorrect.style.display = "block";
                 secondsLeft = secondsLeft -10;
             }
-            localStorage.setItem("highScore",totalScore)
+            // localStorage.setItem("highScore",totalScore)
             questionIndex++;
             if (questionIndex < 9) {
                 displayquestion();
@@ -147,21 +148,18 @@ function endquiz() {
     questionPage.style.display = "none";
     scoreBoard.style.display = "block";
     finalScore.textContent = "Final Score = " + totalScore;
-    timeLeft.style.display = "block";
-    printScores();
-
-    
+    timeLeft.style.display = "block";   
 }
 
 function printScores(){
-    var allScores = localStorage.getItem("allScores");
+    var allScores = JSON.parse(localStorage.getItem("allScores")) || [];
     console.log(allScores)
     if (allScores) {
-        allScores = JSON.parse(allScores);
+        initialsSpan.innerHTML = "";
         console.log(allScores)
         for (let i = 0; i < allScores.length; i++) {
             var scores = document.createElement("li")
-            scores.textContent = allScores[i].score + " " + allScores[i].initials
+            scores.textContent =  `${i + 1}-  Score: ${allScores[i].score} Player: ${allScores[i].initials}`
             initialsSpan.append(scores)
         }
         
@@ -172,51 +170,24 @@ function printScores(){
 
 }
 
-function saveScores (score,initials) {
-    var allScores = localStorage.getItem("allScores");
-    if (allScores) {
-        allScores = JSON.parse(allScores);
-      } else {
-        allScores = [];
-      }
-    //   return allScores;
-    // if (!initials) {
-    //     return;
-    // }
+printScores();
 
-    //add function into this textcontent below
-    var initialsScore = {
+function saveScores (score,initials) {
+        var initialsScore = {
         score: score,
         initials: initials
     }
     allScores.push(initialsScore)
     localStorage.setItem("allScores",JSON.stringify(allScores))
-    // content = initials + " = " + totalScore;
-
-    
-
     scoreBoard.style.display = "none"
     highScorePage.style.display = "block"
-    
-    
+    printScores();
 }
-
-// function init() {
-//     var storedScores = localStorage.parse(localStorage.getItem("content"))
-
-//     if (storeScores !== null) {
-//         content = storedScores;
-//       }
-
-//     //   saveScores();
-// }
-
-// function storeScores(){
-//     localStorage.setItem("content",JSON.stringify(content));
-// }
 
 function clearHighScores() {
     localStorage.clear();
+    initialsSpan.innerHTML = "";
+    allScores = [];
 }
 
 // printScores();
@@ -227,15 +198,15 @@ submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     var initials = document.querySelector("#initials").value;
-    var score = localStorage.getItem("highScore")
+    // var score = localStorage.getItem("highScore")
 
-    if (initials === "") {
-        error.style.display = "block";
-    } else {
-        correct.style.display = "block";
-    }
+    // if (initials === "") {
+    //     error.style.display = "block";
+    // } else {
+    //     correct.style.display = "block";
+    // }
     localStorage.setItem("initials", initials)
-    saveScores(score,initials);
+    saveScores(totalScore,initials);
 } )
 
 
