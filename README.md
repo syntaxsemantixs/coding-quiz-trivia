@@ -13,10 +13,16 @@ StartScreen
 ![alt text](/assets/images/startscreen.png)
 Questions
 ![alt text](/assets/images/questions.png)
-Quiz ended
-![alt text](/assets/images/timesup.png)
+Correct Answer
+![alt text](/assets/images/correctanswer.png)
+Wrong Answer
+![alt text](/assets/images/wronganswer.png)
+Submit Initials Page
+![alt text](/assets/images/submitpage.png)
 Highscore Page
 ![alt text](/assets/images/highscore.png)
+Clear Highscores
+![alt text](/assets/images/clearbutton.png)
 
 
 ## MIT License
