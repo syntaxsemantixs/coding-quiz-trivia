@@ -20,6 +20,7 @@ var count = document.querySelector("#count")
 var backButton = document.querySelector("#back-btn")
 var clickForScores = document.querySelector("#scores")
 var clearbutton = document.querySelector("#clear-btn")
+var questionCard = document.querySelector(".question-card")
 
 
 var secondsLeft
@@ -27,6 +28,8 @@ var totalScore = 0;
 var questionIndex = 0;
 var timeOut = 3
 var allScores = [];
+
+questionCard.setAttribute("style", "color: blue; background-color: lightblue; padding: 40px")
 
 var questions = [
     {
@@ -52,7 +55,7 @@ var questions = [
     {
         question: "Question 5 : What is a good function in JavaScript to use when you do not know what a variable or message does?",
         choices: ["Console.log()", "document.querySelector()", "variable.getElementID()", "variable.textContent"],
-        answer: "Consolle.log()"
+        answer: "Console.log()"
     },
     {
         question: "Question 6 : What do HTML elements allow you to put into them?",
@@ -96,7 +99,7 @@ function displayquestion () {
     askQuestion.textContent = currentQuestion.question;
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         var answerbutton = document.createElement("button")
-        answerbutton.setAttribute("style", "color: blue; height: 100px;")
+        answerbutton.setAttribute("style", "height: 50px;")
         answerbutton.textContent = currentQuestion.choices[i]
         choices.append(answerbutton)
         answerbutton.addEventListener("click",function (e) {
@@ -114,8 +117,12 @@ function displayquestion () {
             }
             // localStorage.setItem("highScore",totalScore)
             questionIndex++;
-            if (questionIndex < 9) {
-                displayquestion();
+            if (questionIndex < 11) {
+                if (questionIndex === 10) {
+                    secondsLeft= 0
+                }else {
+                    displayquestion();
+                }
             }
         })
     }

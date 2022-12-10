@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Coding Quiz</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
@@ -43,15 +43,15 @@
             </section>
             <!---questions--->
             <section class="question-page" id="question-page">
-                <div>
+                <div class="question-card">
                     <h2 id="ask-question">Ask question</h2>
                     <ul id="choices">
                     </ul>
                 </div>
                 <!--Correct or wrong response-->
                 <div id="responses">
-                    <p id="correct">Previous question was correct!</p>
-                    <p id="incorrect">Previous question was wrong!</p>
+                    <p class="corrects" id="correct">Previous question was correct!</p>
+                    <p class="incorrect" id="incorrect">Previous question was wrong!</p>
                 </div>
             </section>
 
@@ -84,7 +84,7 @@
             </section>
         </div>
     </main>
-    <script src="assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
