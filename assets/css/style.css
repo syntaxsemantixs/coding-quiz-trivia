@@ -13,9 +13,9 @@ main {
 }
 
 body {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
+    background-image: url(../images/mountain.png);
 }
-
 .startscreen {
     display: block;
     background-color: lightblue;
@@ -51,11 +51,24 @@ body {
 .error {
     display: block;
     display: none;
+    
 }
 
 .correct {
     display: block;
     display: none;
+}
+
+.corrects {
+    background-color: green;
+    color: white;
+    font-size: x-large;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+    font-size: x-large;
 }
 
 li {
